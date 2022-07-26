@@ -1,0 +1,47 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: target-databend
+plugins:
+  extractors:
+  - name: tap-mysql
+    variant: transferwise
+    pip_url: pipelinewise-tap-mysql
+    config:
+      host: 127.0.0.1
+      port: 13306
+      user: root
+      database: test
+    metadata:
+      '*':
+        replication-method: FULL_TABLE
+  loaders:
+  - name: target-databend
+    namespace: target_databend
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    settings:
+    - name: host
+      kind: string
+      default: localhost
+    - name: port
+      kind: integer
+      default: 3307
+    - name: user
+      kind: string
+      default: root
+    - name: password
+      kind: password
+    - name: dbname
+      kind: string
+      default: target_databend
+    - name: start_date
+      value: '2010-01-01T00:00:00Z'
+    config:
+      dbname: target_mysql
+      host: 192.168.51.196
+      port: 3307
+      user: databend
+      start_date: '2010-01-01T00:00:00Z'
