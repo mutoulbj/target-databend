@@ -1,7 +1,7 @@
 """TargetDatabend target sink class, which handles writing streams."""
 
-import pymysql
 from __future__ import annotations
+import pymysql
 from asyncio.log import logger
 from typing import Optional, List
 from xmlrpc.client import boolean
