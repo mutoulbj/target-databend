@@ -1,6 +1,6 @@
 # target-databend
 
-`target-databend` is a Singer target for TargetDatabend.
+`target-databend` is a Singer target for [Databend](https://github.com/datafuselabs/databend).
 
 Build with the [Meltano Target SDK](https://sdk.meltano.com).
 
